@@ -160,16 +160,16 @@ export default function Home() {
 
       {/* ================= HERO ================= */}
       <section className="relative overflow-hidden">
+
         <div className="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />
 
         <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]" />
 
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
+        {/* Reduced vertical padding */}
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:px-8 lg:py-14">
 
+          {/* ================= HERO LEFT ================= */}
           <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold text-cyan-300">
-              🇧🇩 Available in Bangladesh
-            </div>
 
             <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-[62px]">
               Premium AI &{" "}
@@ -219,6 +219,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
+
               {[
                 ["⚡", "Fast Response"],
                 ["💬", "WhatsApp Support"],
@@ -236,19 +237,24 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+
             </div>
+
           </div>
 
+          {/* ================= HERO RIGHT ================= */}
           <div className="relative mx-auto w-full max-w-[560px]">
 
             <div className="absolute -inset-10 rounded-full bg-cyan-500/10 blur-[90px]" />
 
             <div className="relative rounded-[28px] border border-white/10 bg-white/[0.035] p-2 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl">
+
               <img
                 src="/combo.png"
                 alt="AI Pro Combo Offer"
                 className="w-full rounded-[22px]"
               />
+
             </div>
 
             <div className="absolute -bottom-5 -left-3 rounded-2xl border border-cyan-300/20 bg-[#07111f]/95 px-5 py-3 shadow-xl backdrop-blur-xl sm:-left-6">
@@ -262,7 +268,9 @@ export default function Home() {
               </div>
 
             </div>
+
           </div>
+
         </div>
       </section>
 
@@ -321,11 +329,13 @@ export default function Home() {
               </div>
 
               <div className="overflow-hidden rounded-2xl border border-white/10">
+
                 <img
                   src={product.image}
                   alt={product.title}
                   className="w-full transition duration-500 group-hover:scale-[1.03]"
                 />
+
               </div>
 
               <div className="flex flex-1 flex-col px-1 pt-5">
@@ -343,6 +353,7 @@ export default function Home() {
                 </p>
 
                 <div className="mt-5 space-y-2.5">
+
                   {product.features.map((feature) => (
                     <div
                       key={feature}
@@ -352,11 +363,13 @@ export default function Home() {
                       <span>{feature}</span>
                     </div>
                   ))}
+
                 </div>
 
                 <div className="mt-auto pt-7">
 
                   <div className="flex items-end gap-3">
+
                     <span className="text-sm text-slate-600 line-through">
                       {product.regular}
                     </span>
@@ -364,6 +377,7 @@ export default function Home() {
                     <span className="text-4xl font-black tracking-tight">
                       {product.price}
                     </span>
+
                   </div>
 
                   <a
@@ -381,7 +395,9 @@ export default function Home() {
                   </a>
 
                 </div>
+
               </div>
+
             </article>
           ))}
 
@@ -441,6 +457,7 @@ export default function Home() {
             ))}
 
           </div>
+
         </div>
       </section>
 
@@ -581,85 +598,87 @@ export default function Home() {
         </div>
       </section>
 
-     {/* ================= FOOTER ================= */}
-<footer className="border-t border-white/10 bg-black/20">
-  <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      {/* ================= FOOTER ================= */}
+      <footer className="border-t border-white/10 bg-black/20">
 
-    <div className="grid gap-8 md:grid-cols-2 md:items-start">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
 
-      {/* Brand */}
-      <div>
-        <div className="flex items-center gap-3">
+          <div className="grid gap-8 md:grid-cols-2 md:items-start">
 
-          <img
-            src="/logo.png"
-            alt="AI with Rokon"
-            className="h-12 w-12 rounded-full"
-          />
+            {/* Brand */}
+            <div>
 
-          <div>
-            <div className="font-bold text-white">
-              AI with Rokon
+              <div className="flex items-center gap-3">
+
+                <img
+                  src="/logo.png"
+                  alt="AI with Rokon"
+                  className="h-12 w-12 rounded-full"
+                />
+
+                <div>
+
+                  <div className="font-bold text-white">
+                    AI with Rokon
+                  </div>
+
+                  <div className="text-xs text-slate-600">
+                    AI Tools & Digital Services
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div className="mt-4 text-sm text-slate-500">
+                📍 Gazipur, Dhaka, Bangladesh
+              </div>
+
             </div>
 
-            <div className="text-xs text-slate-600">
-              AI Tools & Digital Services
+            {/* Legal */}
+            <div className="md:text-right">
+
+              <h3 className="mb-4 text-sm font-bold text-white">
+                Legal
+              </h3>
+
+              <div className="flex flex-col gap-3 text-sm md:items-end">
+
+                <a
+                  href="/privacy"
+                  className="text-slate-500 transition hover:text-cyan-300"
+                >
+                  Privacy Policy
+                </a>
+
+                <a
+                  href="/terms"
+                  className="text-slate-500 transition hover:text-cyan-300"
+                >
+                  Terms & Conditions
+                </a>
+
+                <a
+                  href="/refund-policy"
+                  className="text-slate-500 transition hover:text-cyan-300"
+                >
+                  Refund & Replacement Policy
+                </a>
+
+              </div>
+
             </div>
+
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-slate-600">
+            © 2026 AI with Rokon. All rights reserved.
           </div>
 
         </div>
-
-        <div className="mt-4 text-sm text-slate-500">
-          📍 Gazipur, Dhaka, Bangladesh
-        </div>
-      </div>
-
-
-      {/* Legal */}
-      <div className="md:text-right">
-
-        <h3 className="mb-4 text-sm font-bold text-white">
-          Legal
-        </h3>
-
-        <div className="flex flex-col gap-3 text-sm md:items-end">
-
-          <a
-            href="/privacy"
-            className="text-slate-500 transition hover:text-cyan-300"
-          >
-            Privacy Policy
-          </a>
-
-          <a
-            href="/terms"
-            className="text-slate-500 transition hover:text-cyan-300"
-          >
-            Terms & Conditions
-          </a>
-
-          <a
-            href="/refund-policy"
-            className="text-slate-500 transition hover:text-cyan-300"
-          >
-            Refund & Replacement Policy
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    {/* Copyright */}
-    <div className="mt-8 border-t border-white/10 pt-6 text-center text-xs text-slate-600">
-      © 2026 AI with Rokon. All rights reserved.
-    </div>
-
-  </div>
-</footer>
-
+      </footer>
 
       {/* ================= MOBILE WHATSAPP BAR ================= */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#030712]/95 p-2.5 backdrop-blur-xl md:hidden">
