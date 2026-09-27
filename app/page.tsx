@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WHATSAPP_NUMBER = "8801521217967";
@@ -100,6 +103,8 @@ const faqs = [
 ];
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#030712] pt-[68px] text-white">
 
@@ -107,7 +112,12 @@ export default function Home() {
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#030712]/90 backdrop-blur-xl">
         <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-          <a href="#" className="flex items-center gap-2.5">
+          {/* Logo */}
+          <a
+            href="#"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-2.5"
+          >
             <img
               src="/logo.png"
               alt="AI with Rokon"
@@ -125,6 +135,7 @@ export default function Home() {
             </div>
           </a>
 
+          {/* Desktop Navigation */}
           <nav className="hidden items-center gap-7 text-sm text-slate-400 md:flex">
             <a href="#offers" className="transition hover:text-white">
               Offers
@@ -143,19 +154,89 @@ export default function Home() {
             </a>
           </nav>
 
+          {/* Desktop WhatsApp */}
           <a
             href={whatsappLink(
               "Assalamu Alaikum, আমি AI with Rokon-এর offers সম্পর্কে জানতে চাই।"
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-xs font-extrabold text-black shadow-lg shadow-green-500/20 transition hover:scale-105"
+            className="hidden items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-xs font-extrabold text-black shadow-lg shadow-green-500/20 transition hover:scale-105 md:flex"
           >
             <FaWhatsapp className="text-base" />
             <span>WhatsApp</span>
           </a>
 
+          {/* Mobile Hamburger */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white transition hover:bg-white/[0.08] md:hidden"
+          >
+            <span className="text-2xl leading-none">
+              {menuOpen ? "×" : "☰"}
+            </span>
+          </button>
+
         </div>
+
+        {/* ================= MOBILE MENU ================= */}
+        {menuOpen && (
+          <div className="border-t border-white/10 bg-[#030712]/98 px-4 py-4 backdrop-blur-xl md:hidden">
+
+            <nav className="flex flex-col gap-2">
+
+              <a
+                href="#offers"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.05] hover:text-white"
+              >
+                Offers
+              </a>
+
+              <a
+                href="#benefits"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.05] hover:text-white"
+              >
+                Benefits
+              </a>
+
+              <a
+                href="#how-it-works"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.05] hover:text-white"
+              >
+                How It Works
+              </a>
+
+              <a
+                href="#faq"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.05] hover:text-white"
+              >
+                FAQ
+              </a>
+
+              <a
+                href={whatsappLink(
+                  "Assalamu Alaikum, আমি AI with Rokon-এর offers সম্পর্কে জানতে চাই।"
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-black text-black"
+              >
+                <FaWhatsapp className="text-lg" />
+                WhatsApp
+              </a>
+
+            </nav>
+
+          </div>
+        )}
       </header>
 
       {/* ================= HERO ================= */}
@@ -165,11 +246,10 @@ export default function Home() {
 
         <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-purple-500/10 blur-[120px]" />
 
-        {/* Reduced vertical padding */}
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-2 lg:px-8 lg:py-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-7 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 lg:grid-cols-2 lg:px-8 lg:py-14">
 
-          {/* ================= HERO LEFT ================= */}
-          <div>
+          {/* ================= HERO LEFT / TEXT ================= */}
+          <div className="order-2 lg:order-1">
 
             <h1 className="max-w-3xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-[62px]">
               Premium AI &{" "}
@@ -242,8 +322,8 @@ export default function Home() {
 
           </div>
 
-          {/* ================= HERO RIGHT ================= */}
-          <div className="relative mx-auto w-full max-w-[560px]">
+          {/* ================= HERO RIGHT / IMAGE ================= */}
+          <div className="relative order-1 mx-auto w-full max-w-[560px] lg:order-2">
 
             <div className="absolute -inset-10 rounded-full bg-cyan-500/10 blur-[90px]" />
 
@@ -252,7 +332,7 @@ export default function Home() {
               <img
                 src="/combo.png"
                 alt="AI Pro Combo Offer"
-                className="w-full rounded-[22px]"
+                className="mx-auto w-[92%] rounded-[22px] sm:w-full"
               />
 
             </div>
